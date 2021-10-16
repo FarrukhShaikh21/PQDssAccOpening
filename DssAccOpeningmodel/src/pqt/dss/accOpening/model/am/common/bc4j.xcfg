@@ -1,0 +1,17 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<BC4JConfig version="11.1" xmlns="http://xmlns.oracle.com/bc4j/configuration">
+   <AppModuleConfigBag ApplicationName="pqt.dss.accOpening.model.am.AOAM">
+      <AppModuleConfig jbo.project="pqt.dss.accOpening.model.DssAccOpeningmodel" ApplicationName="pqt.dss.accOpening.model.am.AOAM" DeployPlatform="LOCAL" name="AppModuleLocal">
+         <AM-Pooling jbo.ampool.minavailablesize="0" jbo.ampool.maxpoolsize="450" jbo.ampool.maxinactiveage="420000" jbo.ampool.maxavailablesize="100" jbo.recyclethreshold="300" jbo.ampool.initpoolsize="22" jbo.ampool.monitorsleepinterval="240000"/>
+         <Database jbo.TypeMapEntries="OracleApps"/>
+         <Security AppModuleJndiName="pqt.dss.accOpening.model.am.AOAM"/>
+         <Custom ns0:JDBCDataSource="java:comp/env/jdbc/DSSConnDS" ns0:ns0="http://xmlns.oracle.com/bc4j/configuration" xmlns:ns0="http://xmlns.oracle.com/bc4j/configuration"/>
+      </AppModuleConfig>
+      <AppModuleConfig jbo.project="pqt.dss.accOpening.model.DssAccOpeningmodel" ApplicationName="pqt.dss.accOpening.model.am.AOAM" DeployPlatform="LOCAL" name="AppModuleShared">
+         <AM-Pooling jbo.ampool.dynamicjdbccredentials="false" jbo.ampool.resetnontransactionalstate="false" jbo.ampool.maxpoolsize="1" jbo.ampool.maxinactiveage="60000" jbo.ampool.timetolive="120000" jbo.ampool.isuseexclusive="false" jbo.ampool.monitorsleepinterval="30000"/>
+         <Database jbo.TypeMapEntries="OracleApps"/>
+         <Security AppModuleJndiName="pqt.dss.accOpening.model.am.AOAM"/>
+         <Custom ns0:JDBCDataSource="java:comp/env/jdbc/DSSConnDS" ns0:ns0="http://xmlns.oracle.com/bc4j/configuration" xmlns:ns0="http://xmlns.oracle.com/bc4j/configuration"/>
+      </AppModuleConfig>
+   </AppModuleConfigBag>
+</BC4JConfig>

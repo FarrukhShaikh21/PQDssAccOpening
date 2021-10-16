@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Application xmlns="http://xmlns.oracle.com/adfm/application" version="12.2.1.0.31" id="DataBindings"
+             SeparateXMLFiles="false" Package="pqt.dss.accOpening.view" ClientType="Generic">
+  <definitionFactories>
+    <factory nameSpace="http://xmlns.oracle.com/adf/controller/binding"
+             className="oracle.adf.controller.internal.binding.TaskFlowBindingDefFactoryImpl"/>
+    <dtfactory className="oracle.adf.controller.internal.dtrt.binding.BindingDTObjectFactory"/>
+  </definitionFactories>
+  <pageMap>
+    <page path="/WEB-INF/flows/dss-acc-opening-task-flow-definition.xml#dss-acc-opening-task-flow-definition@CreateInsert"
+          usageId="pqt_dss_accOpening_view_dss_acc_opening_task_flow_definition_dss_acc_opening_task_flow_definition_CreateInsertPageDef"/>
+    <page path="/WEB-INF/flows/dss-acc-opening-task-flow-definition.xml#dss-acc-opening-task-flow-definition@Delete"
+          usageId="pqt_dss_accOpening_view_dss_acc_opening_task_flow_definition_dss_acc_opening_task_flow_definition_DeletePageDef"/>
+    <page path="/WEB-INF/flows/dss-acc-opening-task-flow-definition.xml#dss-acc-opening-task-flow-definition@DeleteCommit"
+          usageId="pqt_dss_accOpening_view_dss_acc_opening_task_flow_definition_dss_acc_opening_task_flow_definition_DeleteCommitPageDef"/>
+    <page path="/fragments/accOpen/accOpenQuery.jsff" usageId="pqt_dss_accOpening_view_accOpenQueryPageDef"/>
+    <page path="/pages/accOpen.jsf" usageId="pqt_dss_accOpening_view_accOpenPageDef"/>
+    <page path="/fragments/accOpen/accOpenCreateUpdate.jsff"
+          usageId="pqt_dss_accOpening_view_accOpenCreateUpdatePageDef"/>
+    <page path="/WEB-INF/flows/dss-acc-opening-task-flow-definition.xml#dss-acc-opening-task-flow-definition@Rollback"
+          usageId="pqt_dss_accOpening_view_dss_acc_opening_task_flow_definition_dss_acc_opening_task_flow_definition_Rollback1PageDef"/>
+    <page path="/fragments/accOpen/accOpenDetail.jsff" usageId="pqt_dss_accOpening_view_accOpenDetailPageDef"/>
+    <page path="/fragments/accOpen/accOpenNotification.jsff"
+          usageId="pqt_dss_accOpening_view_accOpenNotificationPageDef"/>
+    <page path="/WEB-INF/flows/dss-acc-opening-notification-task-flow-definition.xml#dss-acc-opening-notification-task-flow-definition@setNVC_WfDocumentId"
+          usageId="pqt_dss_accOpening_view_dss_acc_opening_notification_task_flow_definition_dss_acc_opening_notification_task_flow_definition_setNVC_WfDocumentIdPageDef"/>
+    <page path="/WEB-INF/flows/dss-acc-opening-task-flow-definition.xml#dss-acc-opening-task-flow-definition@accOpenSearchUser"
+          usageId="pqt_dss_accOpening_view_dss_acc_opening_task_flow_definition_dss_acc_opening_task_flow_definition_accOpenSearchUserPageDef"/>
+  </pageMap>
+  <pageDefinitionUsages>
+    <page id="pqt_dss_accOpening_view_dss_acc_opening_task_flow_definition_dss_acc_opening_task_flow_definition_CreateInsertPageDef"
+          path="flows.dss_acc_opening_task_flow_definition_dss_acc_opening_task_flow_definition_CreateInsertPageDef"/>
+    <page id="pqt_dss_accOpening_view_dss_acc_opening_task_flow_definition_dss_acc_opening_task_flow_definition_DeletePageDef"
+          path="flows.dss_acc_opening_task_flow_definition_dss_acc_opening_task_flow_definition_DeletePageDef"/>
+    <page id="pqt_dss_accOpening_view_dss_acc_opening_task_flow_definition_dss_acc_opening_task_flow_definition_DeleteCommitPageDef"
+          path="flows.dss_acc_opening_task_flow_definition_dss_acc_opening_task_flow_definition_DeleteCommitPageDef"/>
+    <page id="pqt_dss_accOpening_view_accOpenQueryPageDef" path="fragments.accOpen.accOpenQueryPageDef"/>
+    <page id="pqt_dss_accOpening_view_accOpenPageDef" path="pages.accOpenPageDef"/>
+    <page id="pqt_dss_accOpening_view_accOpenCreateUpdatePageDef" path="fragments.accOpen.accOpenCreateUpdatePageDef"/>
+    <page id="pqt_dss_accOpening_view_dss_acc_opening_task_flow_definition_dss_acc_opening_task_flow_definition_Rollback1PageDef"
+          path="flows.dss_acc_opening_task_flow_definition_dss_acc_opening_task_flow_definition_Rollback1PageDef"/>
+    <page id="pqt_dss_accOpening_view_accOpenDetailPageDef" path="fragments.accOpen.accOpenDetailPageDef"/>
+    <page id="pqt_dss_accOpening_view_accOpenNotificationPageDef" path="fragments.accOpen.accOpenNotificationPageDef"/>
+    <page id="pqt_dss_accOpening_view_dss_acc_opening_notification_task_flow_definition_dss_acc_opening_notification_task_flow_definition_setNVC_WfDocumentIdPageDef"
+          path="flows.dss_acc_opening_notification_task_flow_definition_dss_acc_opening_notification_task_flow_definition_setNVC_WfDocumentIdPageDef"/>
+    <page id="pqt_dss_accOpening_view_dss_acc_opening_task_flow_definition_dss_acc_opening_task_flow_definition_accOpenSearchUserPageDef"
+          path="flows.dss_acc_opening_task_flow_definition_dss_acc_opening_task_flow_definition_accOpenSearchUserPageDef"/>
+  </pageDefinitionUsages>
+  <dataControlUsages>
+    <BC4JDataControl id="AOAMDataControl" Package="pqt.dss.accOpening.model.am"
+                     FactoryClass="oracle.adf.model.bc4j.DataControlFactoryImpl" SupportsTransactions="true"
+                     SupportsFindMode="true" SupportsRangesize="true" SupportsResetState="true"
+                     SupportsSortCollection="true" Configuration="AppModuleLocal" syncMode="Immediate"
+                     xmlns="http://xmlns.oracle.com/adfm/datacontrol"/>
+  </dataControlUsages>
+</Application>

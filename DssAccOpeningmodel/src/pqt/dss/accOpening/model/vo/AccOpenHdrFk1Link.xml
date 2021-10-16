@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewLink SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewLink
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="AccOpenHdrFk1Link"
+  Version="12.2.1.0.31"
+  InheritPersonalization="merge"
+  EntityAssociation="pqt.dss.accOpening.model.eo.AccOpenHdrFk1Assoc">
+  <ViewLinkDefEnd
+    Name="DssAccountOpeningHeaderView"
+    Cardinality="1"
+    Source="true"
+    Owner="pqt.dss.accOpening.model.vo.DssAccountOpeningHeaderView">
+    <DesignTime>
+      <Attr Name="_isUpdateable" Value="true"/>
+      <Attr Name="_finderName" Value="DssAccountOpeningHeaderView"/>
+      <Attr Name="_accessor" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="pqt.dss.accOpening.model.vo.DssAccountOpeningHeaderView.AccOpenHdrIdPk"/>
+    </AttrArray>
+  </ViewLinkDefEnd>
+  <ViewLinkDefEnd
+    Name="DssAccountOpeningLineView"
+    Cardinality="-1"
+    Owner="pqt.dss.accOpening.model.vo.DssAccountOpeningLineView">
+    <DesignTime>
+      <Attr Name="_isUpdateable" Value="true"/>
+      <Attr Name="_finderName" Value="DssAccountOpeningLineView"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="pqt.dss.accOpening.model.vo.DssAccountOpeningLineView.AccOpenHdrFk"/>
+    </AttrArray>
+  </ViewLinkDefEnd>
+</ViewLink>

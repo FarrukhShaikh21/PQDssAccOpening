@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.0.31"
+                id="dss_acc_opening_task_flow_definition_dss_acc_opening_task_flow_definition_CreateInsertPageDef"
+                Package="flows" SkipValidation="true">
+  <parameters/>
+  <executables>
+    <iterator Binds="DssAccountOpeningHeaderView1" RangeSize="25" DataControl="AOAMDataControl"
+              id="DssAccountOpeningHeaderView1Iterator"/>
+  </executables>
+  <bindings>
+    <action IterBinding="DssAccountOpeningHeaderView1Iterator" id="CreateInsert" RequiresUpdateModel="true"
+            Action="createInsertRow"/>
+  </bindings>
+</pageDefinition>

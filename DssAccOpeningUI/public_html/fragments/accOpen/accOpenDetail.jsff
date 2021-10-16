@@ -1,0 +1,154 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                xmlns:f="http://java.sun.com/jsf/core">
+  <af:panelStretchLayout id="psl1" binding="#{backingBeanScope.aclDetailClass.psl1}">
+    <f:facet name="center">
+      <af:panelHeader text="Detail page" id="ph1" binding="#{backingBeanScope.aclDetailClass.ph1}">
+        <f:facet name="toolbar">
+          <af:toolbar id="t2" binding="#{backingBeanScope.aclDetailClass.t2}">
+            <af:group id="g1" binding="#{backingBeanScope.aclDetailClass.g1}">
+              <af:button text="back to Search" id="b1" action="backQuery" binding="#{backingBeanScope.aclDetailClass.b1}"
+                         immediate="true"/>
+              <af:button text="Submit For Process" id="b2" binding="#{backingBeanScope.aclDetailClass.b2}"
+                         action="#{backingBeanScope.aclDetailClass.SubmitForApproval}"
+                         disabled="#{bindings.WorkflowStatus.inputValue eq 'APPROVED' or bindings.WorkflowStatus.inputValue eq 'INPROCESS'}"/>
+            </af:group>
+          </af:toolbar>
+        </f:facet>
+        <af:panelGroupLayout id="pgl1" binding="#{backingBeanScope.aclDetailClass.pgl1}" layout="vertical">
+          <af:panelLabelAndMessage label="#{bindings.AccOpenDocNo.hints.label}" id="plam3"
+                                   binding="#{backingBeanScope.aclDetailClass.plam3}" inlineStyle="font-weight:bolder;"
+                                   labelStyle="font-weight:bolder;">
+            <af:outputText value="#{bindings.AccOpenDocNo.inputValue}"
+                           shortDesc="#{bindings.AccOpenDocNo.hints.tooltip}" id="ot3"
+                           binding="#{backingBeanScope.aclDetailClass.ot3}"/>
+          </af:panelLabelAndMessage>
+          <af:panelFormLayout id="pfl1" rows="2" binding="#{backingBeanScope.aclDetailClass.pfl1}">
+            <af:inputListOfValues id="userBranchNameId"
+                                  popupTitle="Search and Select: #{bindings.UserBranchName.hints.label}"
+                                  value="#{bindings.UserBranchName.inputValue}"
+                                  label="#{bindings.UserBranchName.hints.label}"
+                                  model="#{bindings.UserBranchName.listOfValuesModel}"
+                                  required="#{bindings.UserBranchName.hints.mandatory}"
+                                  columns="#{bindings.UserBranchName.hints.displayWidth}"
+                                  shortDesc="#{bindings.UserBranchName.hints.tooltip}" readOnly="true"
+                                  binding="#{backingBeanScope.aclDetailClass.userBranchNameId}">
+              <f:validator binding="#{bindings.UserBranchName.validator}"/>
+            </af:inputListOfValues>
+            <af:inputDate value="#{bindings.RequestDate.inputValue}" label="#{bindings.RequestDate.hints.label}"
+                          required="#{bindings.RequestDate.hints.mandatory}"
+                          columns="#{bindings.RequestDate.hints.displayWidth}"
+                          shortDesc="#{bindings.RequestDate.hints.tooltip}" id="id1" readOnly="true"
+                          binding="#{backingBeanScope.aclDetailClass.id1}">
+              <f:validator binding="#{bindings.RequestDate.validator}"/>
+              <af:convertDateTime pattern="#{bindings.RequestDate.format}"/>
+            </af:inputDate>
+            <af:inputText value="#{bindings.BankName.inputValue}" label="#{bindings.BankName.hints.label}"
+                          required="#{bindings.BankName.hints.mandatory}"
+                          columns="#{bindings.BankName.hints.displayWidth}"
+                          maximumLength="#{bindings.BankName.hints.precision}"
+                          shortDesc="#{bindings.BankName.hints.tooltip}" id="it1" readOnly="true"
+                          binding="#{backingBeanScope.aclDetailClass.it1}">
+              <f:validator binding="#{bindings.BankName.validator}"/>
+            </af:inputText>
+            <af:inputText value="#{bindings.BranchName.inputValue}" label="#{bindings.BranchName.hints.label}"
+                          required="#{bindings.BranchName.hints.mandatory}"
+                          columns="#{bindings.BranchName.hints.displayWidth}"
+                          maximumLength="#{bindings.BranchName.hints.precision}"
+                          shortDesc="#{bindings.BranchName.hints.tooltip}" id="it2" readOnly="true"
+                          binding="#{backingBeanScope.aclDetailClass.it2}">
+              <f:validator binding="#{bindings.BranchName.validator}"/>
+            </af:inputText>
+            <af:inputText value="#{bindings.WorkflowStatus.inputValue}" label="#{bindings.WorkflowStatus.hints.label}"
+                          required="#{bindings.WorkflowStatus.hints.mandatory}"
+                          columns="#{bindings.WorkflowStatus.hints.displayWidth}"
+                          maximumLength="#{bindings.WorkflowStatus.hints.precision}"
+                          shortDesc="#{bindings.WorkflowStatus.hints.tooltip}" id="it4"
+                          binding="#{backingBeanScope.aclDetailClass.it4}" disabled="true">
+              <f:validator binding="#{bindings.WorkflowStatus.validator}"/>
+            </af:inputText>
+          </af:panelFormLayout>
+          <af:table value="#{bindings.DssAccountOpeningLineView2.collectionModel}" var="row"
+                    rows="#{bindings.DssAccountOpeningLineView2.rangeSize}"
+                    emptyText="#{bindings.DssAccountOpeningLineView2.viewable ? 'No data to display.' : 'Access Denied.'}"
+                    rowBandingInterval="0"
+                    selectedRowKeys="#{bindings.DssAccountOpeningLineView2.collectionModel.selectedRow}"
+                    selectionListener="#{bindings.DssAccountOpeningLineView2.collectionModel.makeCurrent}"
+                    rowSelection="single" fetchSize="#{bindings.DssAccountOpeningLineView2.rangeSize}" id="t1"
+                    binding="#{backingBeanScope.aclDetailClass.t1}">
+            <af:column headerText="#{bindings.DssAccountOpeningLineView2.hints.AgentCode.label}" id="c9" width="139">
+              <af:inputListOfValues id="agentCodeId"
+                                    popupTitle="Search and Select: #{bindings.DssAccountOpeningLineView2.hints.AgentCode.label}"
+                                    value="#{row.bindings.AgentCode.inputValue}"
+                                    model="#{row.bindings.AgentCode.listOfValuesModel}"
+                                    required="#{bindings.DssAccountOpeningLineView2.hints.AgentCode.mandatory}"
+                                    columns="#{bindings.DssAccountOpeningLineView2.hints.AgentCode.displayWidth}"
+                                    shortDesc="#{bindings.DssAccountOpeningLineView2.hints.AgentCode.tooltip}"
+                                    readOnly="true">
+                <f:validator binding="#{row.bindings.AgentCode.validator}"/>
+              </af:inputListOfValues>
+            </af:column>
+            <af:column headerText="#{bindings.DssAccountOpeningLineView2.hints.AgentName.label}" id="c10" width="118">
+              <af:inputText value="#{row.bindings.AgentName.inputValue}"
+                            label="#{bindings.DssAccountOpeningLineView2.hints.AgentName.label}"
+                            required="#{bindings.DssAccountOpeningLineView2.hints.AgentName.mandatory}"
+                            columns="#{bindings.DssAccountOpeningLineView2.hints.AgentName.displayWidth}"
+                            maximumLength="#{bindings.DssAccountOpeningLineView2.hints.AgentName.precision}"
+                            shortDesc="#{bindings.DssAccountOpeningLineView2.hints.AgentName.tooltip}" id="it9"
+                            readOnly="true">
+                <f:validator binding="#{row.bindings.AgentName.validator}"/>
+              </af:inputText>
+            </af:column>
+            <af:column headerText="#{bindings.DssAccountOpeningLineView2.hints.Designation.label}" id="c12" width="113">
+              <af:inputText value="#{row.bindings.Designation.inputValue}"
+                            label="#{bindings.DssAccountOpeningLineView2.hints.Designation.label}"
+                            required="#{bindings.DssAccountOpeningLineView2.hints.Designation.mandatory}"
+                            columns="#{bindings.DssAccountOpeningLineView2.hints.Designation.displayWidth}"
+                            maximumLength="#{bindings.DssAccountOpeningLineView2.hints.Designation.precision}"
+                            shortDesc="#{bindings.DssAccountOpeningLineView2.hints.Designation.tooltip}" id="it11"
+                            readOnly="true">
+                <f:validator binding="#{row.bindings.Designation.validator}"/>
+              </af:inputText>
+            </af:column>
+            <af:column headerText="#{bindings.DssAccountOpeningLineView2.hints.CnicNo.label}" id="c13" width="173">
+              <af:inputText value="#{row.bindings.CnicNo.inputValue}"
+                            label="#{bindings.DssAccountOpeningLineView2.hints.CnicNo.label}"
+                            required="#{bindings.DssAccountOpeningLineView2.hints.CnicNo.mandatory}"
+                            columns="#{bindings.DssAccountOpeningLineView2.hints.CnicNo.displayWidth}"
+                            maximumLength="#{bindings.DssAccountOpeningLineView2.hints.CnicNo.precision}"
+                            shortDesc="#{bindings.DssAccountOpeningLineView2.hints.CnicNo.tooltip}" id="it12"
+                            readOnly="true">
+                <f:validator binding="#{row.bindings.CnicNo.validator}"/>
+              </af:inputText>
+            </af:column>
+            <af:column headerText="#{bindings.DssAccountOpeningLineView2.hints.BankAccNo.label}" id="c1" width="150">
+              <af:inputText value="#{row.bindings.BankAccNo.inputValue}"
+                            label="#{bindings.DssAccountOpeningLineView2.hints.BankAccNo.label}"
+                            required="#{bindings.DssAccountOpeningLineView2.hints.BankAccNo.mandatory}"
+                            columns="#{bindings.DssAccountOpeningLineView2.hints.BankAccNo.displayWidth}"
+                            maximumLength="#{bindings.DssAccountOpeningLineView2.hints.BankAccNo.precision}"
+                            shortDesc="#{bindings.DssAccountOpeningLineView2.hints.BankAccNo.tooltip}" id="it3"
+                            disabled="true">
+                <f:validator binding="#{row.bindings.BankAccNo.validator}"/>
+                <af:convertNumber groupingUsed="false"
+                                  pattern="#{bindings.DssAccountOpeningLineView2.hints.BankAccNo.format}"/>
+              </af:inputText>
+            </af:column>
+            <af:column headerText="#{bindings.DssAccountOpeningLineView2.hints.DateOfJoin.label}" id="c14" width="199">
+              <af:inputDate value="#{row.bindings.DateOfJoin.inputValue}"
+                            label="#{bindings.DssAccountOpeningLineView2.hints.DateOfJoin.label}"
+                            required="#{bindings.DssAccountOpeningLineView2.hints.DateOfJoin.mandatory}"
+                            columns="#{bindings.DssAccountOpeningLineView2.hints.DateOfJoin.displayWidth}"
+                            shortDesc="#{bindings.DssAccountOpeningLineView2.hints.DateOfJoin.tooltip}" id="id4"
+                            readOnly="true">
+                <f:validator binding="#{row.bindings.DateOfJoin.validator}"/>
+                <af:convertDateTime pattern="#{bindings.DssAccountOpeningLineView2.hints.DateOfJoin.format}"/>
+              </af:inputDate>
+            </af:column>
+          </af:table>
+        </af:panelGroupLayout>
+      </af:panelHeader>
+    </f:facet>
+  </af:panelStretchLayout>
+  <!--oracle-jdev-comment:auto-binding-backing-bean-name:aclDetailClass-->
+</ui:composition>

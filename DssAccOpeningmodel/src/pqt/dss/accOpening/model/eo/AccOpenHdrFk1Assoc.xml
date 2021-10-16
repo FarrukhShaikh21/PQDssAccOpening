@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE Association SYSTEM "jbo_03_01.dtd">
+<!---->
+<Association
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="AccOpenHdrFk1Assoc"
+  Version="12.2.1.0.31"
+  InheritPersonalization="merge">
+  <DesignTime>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
+  <AssociationEnd
+    Name="DssAccountOpeningHeader"
+    Cardinality="1"
+    Source="true"
+    Owner="pqt.dss.accOpening.model.eo.DssAccountOpeningHeader"
+    DeleteContainee="true"
+    LockLevel="NONE">
+    <DesignTime>
+      <Attr Name="_isUpdateable" Value="true"/>
+      <Attr Name="_aggregation" Value="0"/>
+      <Attr Name="_finderName" Value="DssAccountOpeningHeader"/>
+      <Attr Name="_foreignKey" Value="pqt.dss.accOpening.model.eo.DssAccountOpeningHeader.AccOpenHdrPk"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="pqt.dss.accOpening.model.eo.DssAccountOpeningHeader.AccOpenHdrIdPk"/>
+    </AttrArray>
+  </AssociationEnd>
+  <AssociationEnd
+    Name="DssAccountOpeningLine"
+    Cardinality="-1"
+    Owner="pqt.dss.accOpening.model.eo.DssAccountOpeningLine">
+    <DesignTime>
+      <Attr Name="_isUpdateable" Value="true"/>
+      <Attr Name="_aggregation" Value="0"/>
+      <Attr Name="_finderName" Value="DssAccountOpeningLine"/>
+      <Attr Name="_foreignKey" Value="pqt.dss.accOpening.model.eo.DssAccountOpeningLine.AccOpenHdrFk1"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="pqt.dss.accOpening.model.eo.DssAccountOpeningLine.AccOpenHdrFk"/>
+    </AttrArray>
+  </AssociationEnd>
+</Association>

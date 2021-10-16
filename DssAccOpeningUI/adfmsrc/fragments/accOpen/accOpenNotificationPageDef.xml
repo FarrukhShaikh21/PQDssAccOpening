@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.0.31" id="accOpenNotificationPageDef"
+                Package="fragments.accOpen">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="DssAccountOpeningHeaderView1" RangeSize="25" DataControl="AOAMDataControl"
+              id="DssAccountOpeningHeaderView1Iterator"/>
+    <iterator Binds="DssAccountOpeningLineView2" RangeSize="25" DataControl="AOAMDataControl"
+              id="DssAccountOpeningLineView2Iterator"/>
+  </executables>
+  <bindings>
+    <listOfValues IterBinding="DssAccountOpeningHeaderView1Iterator" StaticList="false" Uses="LOV_UserBranchName"
+                  id="UserBranchName"/>
+    <attributeValues IterBinding="DssAccountOpeningHeaderView1Iterator" id="BankName">
+      <AttrNames>
+        <Item Value="BankName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="DssAccountOpeningHeaderView1Iterator" id="BranchName">
+      <AttrNames>
+        <Item Value="BranchName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="DssAccountOpeningHeaderView1Iterator" id="RequestDate">
+      <AttrNames>
+        <Item Value="RequestDate"/>
+      </AttrNames>
+    </attributeValues>
+    <tree IterBinding="DssAccountOpeningLineView2Iterator" id="DssAccountOpeningLineView2">
+      <nodeDefinition DefName="pqt.dss.accOpening.model.vo.DssAccountOpeningLineView"
+                      Name="DssAccountOpeningLineView20">
+        <AttrNames>
+          <Item Value="AgentCode"/>
+          <Item Value="AgentName"/>
+          <Item Value="DesigCode"/>
+          <Item Value="Designation"/>
+          <Item Value="CnicNo"/>
+          <Item Value="DateOfJoin"/>
+          <Item Value="BankAccNo"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <attributeValues IterBinding="DssAccountOpeningLineView2Iterator" id="AgentCode">
+      <AttrNames>
+        <Item Value="AgentCode"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="DssAccountOpeningHeaderView1Iterator" id="AccOpenDocNo">
+      <AttrNames>
+        <Item Value="AccOpenDocNo"/>
+      </AttrNames>
+    </attributeValues>
+  </bindings>
+</pageDefinition>

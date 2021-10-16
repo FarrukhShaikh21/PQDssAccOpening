@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="dss-acc-opening-task-flow-definition">
+    <default-activity>accOpenSearchUser</default-activity>
+    <data-control-scope>
+      <shared/>
+    </data-control-scope>
+    <managed-bean id="__18">
+      <managed-bean-name>aclDetailClass</managed-bean-name>
+      <managed-bean-class>pqt.dss.accOpening.view.bb.aclDetailClass</managed-bean-class>
+      <managed-bean-scope>backingBean</managed-bean-scope>
+    </managed-bean>
+    <managed-bean id="__21">
+      <managed-bean-name>createUpdateBean</managed-bean-name>
+      <managed-bean-class>pqt.dss.accOpening.view.createUpdateBean</managed-bean-class>
+      <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
+    <view id="accOpenQuery">
+      <page>/fragments/accOpen/accOpenQuery.jsff</page>
+    </view>
+    <view id="accOpenCreateUpdate">
+      <page>/fragments/accOpen/accOpenCreateUpdate.jsff</page>
+    </view>
+    <view id="accOpenDetail">
+      <page>/fragments/accOpen/accOpenDetail.jsff</page>
+    </view>
+    <method-call id="CreateInsert">
+      <method>#{bindings.CreateInsert.execute}</method>
+      <outcome>
+        <fixed-outcome>CreateInsert</fixed-outcome>
+      </outcome>
+    </method-call>
+    <method-call id="Delete">
+      <method>#{bindings.Delete.execute}</method>
+      <outcome>
+        <fixed-outcome>Delete</fixed-outcome>
+      </outcome>
+    </method-call>
+    <method-call id="DeleteCommit">
+      <method>#{bindings.DeleteCommit.execute}</method>
+      <outcome>
+        <fixed-outcome>DeleteCommit</fixed-outcome>
+      </outcome>
+    </method-call>
+    <method-call id="Rollback">
+      <method>#{bindings.Rollback.execute}</method>
+      <outcome>
+        <fixed-outcome>Rollback</fixed-outcome>
+      </outcome>
+    </method-call>
+    <method-call id="accOpenSearchUser">
+      <method>#{bindings.accOpenSearchUser.execute}</method>
+      <outcome>
+        <fixed-outcome>accOpenSearchUser</fixed-outcome>
+      </outcome>
+    </method-call>
+    <control-flow-rule id="__1">
+      <from-activity-id>accOpenQuery</from-activity-id>
+      <control-flow-case id="__2">
+        <from-outcome>goUpdate</from-outcome>
+        <to-activity-id>accOpenCreateUpdate</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__7">
+        <from-outcome>goCreate</from-outcome>
+        <to-activity-id>CreateInsert</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__10">
+        <from-outcome>goDelete</from-outcome>
+        <to-activity-id>Delete</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__15">
+        <from-outcome>goDetail</from-outcome>
+        <to-activity-id>accOpenDetail</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__3">
+      <from-activity-id>accOpenCreateUpdate</from-activity-id>
+      <control-flow-case id="__4">
+        <from-outcome>backQuery</from-outcome>
+        <to-activity-id>Rollback</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__8">
+      <from-activity-id>CreateInsert</from-activity-id>
+      <control-flow-case id="__9">
+        <from-outcome>CreateInsert</from-outcome>
+        <to-activity-id>accOpenCreateUpdate</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__11">
+      <from-activity-id>Delete</from-activity-id>
+      <control-flow-case id="__12">
+        <from-outcome>Delete</from-outcome>
+        <to-activity-id>DeleteCommit</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__13">
+      <from-activity-id>DeleteCommit</from-activity-id>
+      <control-flow-case id="__14">
+        <from-outcome>DeleteCommit</from-outcome>
+        <to-activity-id>accOpenQuery</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__16">
+      <from-activity-id>accOpenDetail</from-activity-id>
+      <control-flow-case id="__17">
+        <from-outcome>backQuery</from-outcome>
+        <to-activity-id>Rollback</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__5">
+      <from-activity-id>Rollback</from-activity-id>
+      <control-flow-case id="__6">
+        <from-outcome>Rollback</from-outcome>
+        <to-activity-id>accOpenQuery</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__19">
+      <from-activity-id>accOpenSearchUser</from-activity-id>
+      <control-flow-case id="__20">
+        <from-outcome>accOpenSearchUser</from-outcome>
+        <to-activity-id>accOpenQuery</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <use-page-fragments/>
+  </task-flow-definition>
+</adfc-config>

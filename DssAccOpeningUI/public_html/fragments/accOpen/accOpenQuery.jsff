@@ -1,0 +1,118 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                xmlns:f="http://java.sun.com/jsf/core">
+  <af:panelStretchLayout id="psl1">
+    <f:facet name="center">
+      <af:panelGroupLayout layout="vertical" id="pgl1">
+        <af:panelHeader text="Search Page" id="ph1">
+          <af:query id="qryId1" headerText="Search" disclosed="true"
+                    value="#{bindings.BranchViewCriteriaQuery.queryDescriptor}"
+                    model="#{bindings.BranchViewCriteriaQuery.queryModel}"
+                    queryListener="#{bindings.BranchViewCriteriaQuery.processQuery}"
+                    queryOperationListener="#{bindings.BranchViewCriteriaQuery.processQueryOperation}"
+                    resultComponentId="::pc1:resId1" saveQueryMode="hidden" modeChangeVisible="false"/>
+        </af:panelHeader>
+        <af:panelCollection id="pc1" styleClass="AFStretchWidth" featuresOff="detach viewMenu">
+          <f:facet name="menus"/>
+          <f:facet name="toolbar">
+            <af:toolbar id="t1">
+              <af:group id="g1">
+                <af:button text="Create New" id="b1" action="goCreate"/>
+                <af:button actionListener="#{bindings.Apply.execute}" text="Apply" disabled="#{!bindings.Apply.enabled}"
+                           id="b2"/>
+              </af:group>
+            </af:toolbar>
+          </f:facet>
+          <f:facet name="statusbar"/>
+          <af:table value="#{bindings.DssAccountOpeningHeaderView1.collectionModel}" var="row"
+                    rows="#{bindings.DssAccountOpeningHeaderView1.rangeSize}"
+                    emptyText="#{bindings.DssAccountOpeningHeaderView1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                    rowBandingInterval="0"
+                    selectedRowKeys="#{bindings.DssAccountOpeningHeaderView1.collectionModel.selectedRow}"
+                    selectionListener="#{bindings.DssAccountOpeningHeaderView1.collectionModel.makeCurrent}"
+                    rowSelection="single" fetchSize="#{bindings.DssAccountOpeningHeaderView1.rangeSize}" id="resId1"
+                    scrollPolicy="page">
+            <af:column headerText="#{bindings.DssAccountOpeningHeaderView1.hints.AccOpenHdrIdPk.label}" id="c6"
+                       rendered="false">
+              <af:inputText value="#{row.bindings.AccOpenHdrIdPk.inputValue}"
+                            label="#{bindings.DssAccountOpeningHeaderView1.hints.AccOpenHdrIdPk.label}"
+                            required="#{bindings.DssAccountOpeningHeaderView1.hints.AccOpenHdrIdPk.mandatory}"
+                            columns="#{bindings.DssAccountOpeningHeaderView1.hints.AccOpenHdrIdPk.displayWidth}"
+                            maximumLength="#{bindings.DssAccountOpeningHeaderView1.hints.AccOpenHdrIdPk.precision}"
+                            shortDesc="#{bindings.DssAccountOpeningHeaderView1.hints.AccOpenHdrIdPk.tooltip}" id="it1">
+                <f:validator binding="#{row.bindings.AccOpenHdrIdPk.validator}"/>
+                <af:convertNumber groupingUsed="false"
+                                  pattern="#{bindings.DssAccountOpeningHeaderView1.hints.AccOpenHdrIdPk.format}"/>
+              </af:inputText>
+            </af:column>
+            <af:column headerText="#{bindings.DssAccountOpeningHeaderView1.hints.AccOpenDocNo.label}" id="c4"
+                       width="200" align="center">
+              <af:outputText value="#{row.AccOpenDocNo}"
+                             shortDesc="#{bindings.DssAccountOpeningHeaderView1.hints.AccOpenDocNo.tooltip}" id="ot6"/>
+            </af:column>
+            <af:column headerText="#{bindings.DssAccountOpeningHeaderView1.hints.BankName.label}" id="resId1c1"
+                       width="120" align="center">
+              <af:outputText value="#{row.BankName}"
+                             shortDesc="#{bindings.DssAccountOpeningHeaderView1.hints.BankName.tooltip}" id="ot1"/>
+            </af:column>
+            <af:column headerText="#{bindings.DssAccountOpeningHeaderView1.hints.BranchName.label}" id="resId1c2"
+                       width="125" align="center">
+              <af:outputText value="#{row.BranchName}"
+                             shortDesc="#{bindings.DssAccountOpeningHeaderView1.hints.BranchName.tooltip}" id="ot2"/>
+            </af:column>
+            <af:column headerText="#{bindings.DssAccountOpeningHeaderView1.hints.RequestDate.label}" id="resId1c3"
+                       width="120" align="center">
+              <af:outputText value="#{row.RequestDate}"
+                             shortDesc="#{bindings.DssAccountOpeningHeaderView1.hints.RequestDate.tooltip}" id="ot3">
+                <af:convertDateTime pattern="#{bindings.DssAccountOpeningHeaderView1.hints.RequestDate.format}"/>
+              </af:outputText>
+            </af:column>
+            <af:column headerText="#{bindings.DssAccountOpeningHeaderView1.hints.WorkflowStatus.label}" id="c8"
+                       width="120" align="center">
+              <af:outputText value="#{row.WorkflowStatus}"
+                             shortDesc="#{bindings.DssAccountOpeningHeaderView1.hints.WorkflowStatus.tooltip}"
+                             id="ot4"/>
+            </af:column>
+            <af:column id="c9" headerText="Report Type" width="150" align="center">
+              <af:selectOneChoice value="#{row.bindings.ReportType.inputValue}" label="#{row.bindings.ReportType.label}"
+                                  required="#{bindings.DssAccountOpeningHeaderView1.hints.ReportType.mandatory}"
+                                  shortDesc="#{bindings.DssAccountOpeningHeaderView1.hints.ReportType.tooltip}"
+                                  id="soc1">
+                <f:selectItems value="#{row.bindings.ReportType.items}" id="si1"/>
+                <f:validator binding="#{row.bindings.ReportType.validator}"/>
+              </af:selectOneChoice>
+            </af:column>
+            <af:column headerText="#{bindings.DssAccountOpeningHeaderView1.hints.AccOpenHdrIdPk.label}" id="c7"
+                       rendered="false">
+              <af:inputText value="#{row.bindings.AccOpenHdrIdPk.inputValue}"
+                            label="#{bindings.DssAccountOpeningHeaderView1.hints.AccOpenHdrIdPk.label}"
+                            required="#{bindings.DssAccountOpeningHeaderView1.hints.AccOpenHdrIdPk.mandatory}"
+                            columns="#{bindings.DssAccountOpeningHeaderView1.hints.AccOpenHdrIdPk.displayWidth}"
+                            maximumLength="#{bindings.DssAccountOpeningHeaderView1.hints.AccOpenHdrIdPk.precision}"
+                            shortDesc="#{bindings.DssAccountOpeningHeaderView1.hints.AccOpenHdrIdPk.tooltip}" id="it2">
+                <f:validator binding="#{row.bindings.AccOpenHdrIdPk.validator}"/>
+                <af:convertNumber groupingUsed="false"
+                                  pattern="#{bindings.DssAccountOpeningHeaderView1.hints.AccOpenHdrIdPk.format}"/>
+              </af:inputText>
+            </af:column>
+            <af:column id="c1" align="center" headerText="Detail" width="50">
+              <af:link id="l1" action="goDetail" icon="/images/detailsicon_enabled.gif"/>
+            </af:column>
+            <af:column id="c2" align="center" headerText="Update" width="50">
+              <af:link id="l2" action="goUpdate" icon="/images/updateicon_enabled.gif"
+                       disabled="#{row.WorkflowStatus eq 'APPROVED' or row.WorkflowStatus eq 'INPROCESS'}"/>
+            </af:column>
+            <af:column id="c3" align="center" headerText="Delete" width="50">
+              <af:link id="l3" action="goDelete" icon="/images/deleteicon_enabled.gif"
+                       disabled="#{row.WorkflowStatus eq 'APPROVED' or row.WorkflowStatus eq 'INPROCESS'}"/>
+            </af:column>
+            <af:column id="c5" align="center" headerText="Report" width="50">
+              <af:link id="l4" icon="/images/printLogo.gif"
+                       actionListener="#{CallReport.callDSSReports('DSS_ACC_OPEN', (row.bindings.AccOpenHdrIdPk.inputValue))}"/>
+            </af:column>
+          </af:table>
+        </af:panelCollection>
+      </af:panelGroupLayout>
+    </f:facet>
+  </af:panelStretchLayout>
+</ui:composition>

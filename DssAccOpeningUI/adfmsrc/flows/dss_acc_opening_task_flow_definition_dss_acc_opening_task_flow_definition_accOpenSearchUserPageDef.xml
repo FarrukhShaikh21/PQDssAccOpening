@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.0.31"
+                id="dss_acc_opening_task_flow_definition_dss_acc_opening_task_flow_definition_accOpenSearchUserPageDef"
+                Package="flows" SkipValidation="true">
+  <parameters/>
+  <executables/>
+  <bindings>
+    <methodAction id="accOpenSearchUser" RequiresUpdateModel="true" Action="invokeMethod" MethodName="accOpenSearchUser"
+                  IsViewObjectMethod="true" DataControl="AOAMDataControl"
+                  InstanceName="data.AOAMDataControl.DssAccountOpeningHeaderView1"/>
+  </bindings>
+</pageDefinition>

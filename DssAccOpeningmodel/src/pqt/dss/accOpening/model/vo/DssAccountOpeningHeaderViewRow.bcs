@@ -1,0 +1,12 @@
+//Groovy Scripts for pqt.dss.accOpening.model.vo.DssAccountOpeningHeaderView
+
+package pqt.dss.accOpening.model.vo
+
+import oracle.jbo.script.annotation.TransientValueExpression;
+
+@TransientValueExpression(attributeName="RequestDate")
+def RequestDate_ExpressionScript_Expression()
+{
+adf.currentDate
+}
+

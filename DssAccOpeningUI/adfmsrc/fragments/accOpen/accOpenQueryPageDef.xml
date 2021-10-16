@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.0.31" id="accOpenQueryPageDef"
+                Package="fragments.accOpen">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="DssAccountOpeningHeaderView1" RangeSize="15" DataControl="AOAMDataControl"
+              id="DssAccountOpeningHeaderView1Iterator"/>
+    <searchRegion Criteria="BranchViewCriteria" Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  Binds="DssAccountOpeningHeaderView1Iterator" id="BranchViewCriteriaQuery"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="DssAccountOpeningHeaderView1Iterator" id="DssAccountOpeningHeaderView1">
+      <nodeDefinition DefName="pqt.dss.accOpening.model.vo.DssAccountOpeningHeaderView"
+                      Name="DssAccountOpeningHeaderView10">
+        <AttrNames>
+          <Item Value="AccOpenHdrIdPk"/>
+          <Item Value="AccOpenDocNo"/>
+          <Item Value="BankName"/>
+          <Item Value="BranchName"/>
+          <Item Value="RequestDate"/>
+          <Item Value="WorkflowStatus"/>
+          <Item Value="ReportType"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="Apply" RequiresUpdateModel="true" Action="invokeMethod" MethodName="Apply"
+                  IsViewObjectMethod="false" DataControl="AOAMDataControl"
+                  InstanceName="data.AOAMDataControl.dataProvider"/>
+  </bindings>
+</pageDefinition>

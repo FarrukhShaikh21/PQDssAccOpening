@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.0.31" id="accOpenCreateUpdatePageDef"
+                Package="fragments.accOpen">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="DssAccountOpeningHeaderView1" RangeSize="25" DataControl="AOAMDataControl"
+              id="DssAccountOpeningHeaderView1Iterator" ChangeEventPolicy="none"/>
+    <iterator Binds="DssAccountOpeningLineView2" RangeSize="25" DataControl="AOAMDataControl"
+              id="DssAccountOpeningLineView2Iterator" ChangeEventPolicy="none"/>
+  </executables>
+  <bindings>
+    <methodAction id="Apply" RequiresUpdateModel="true" Action="invokeMethod" MethodName="Apply"
+                  IsViewObjectMethod="false" DataControl="AOAMDataControl"
+                  InstanceName="data.AOAMDataControl.dataProvider"/>
+    <attributeValues IterBinding="DssAccountOpeningHeaderView1Iterator" id="RequestDate">
+      <AttrNames>
+        <Item Value="RequestDate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="DssAccountOpeningHeaderView1Iterator" id="BankName">
+      <AttrNames>
+        <Item Value="BankName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="DssAccountOpeningHeaderView1Iterator" id="BranchName">
+      <AttrNames>
+        <Item Value="BranchName"/>
+      </AttrNames>
+    </attributeValues>
+    <tree IterBinding="DssAccountOpeningLineView2Iterator" id="DssAccountOpeningLineView2">
+      <nodeDefinition DefName="pqt.dss.accOpening.model.vo.DssAccountOpeningLineView"
+                      Name="DssAccountOpeningLineView20">
+        <AttrNames>
+          <Item Value="AgentCode"/>
+          <Item Value="AgentName"/>
+          <Item Value="CnicNo"/>
+          <Item Value="Designation"/>
+          <Item Value="DesigCode"/>
+          <Item Value="DateOfJoin"/>
+          <Item Value="BankAccNo"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action IterBinding="DssAccountOpeningLineView2Iterator" id="CreateInsert" RequiresUpdateModel="true"
+            Action="createInsertRow"/>
+    <action IterBinding="DssAccountOpeningLineView2Iterator" id="Delete" RequiresUpdateModel="false"
+            Action="removeCurrentRow"/>
+    <attributeValues IterBinding="DssAccountOpeningHeaderView1Iterator" id="AccOpenDocNo">
+      <AttrNames>
+        <Item Value="AccOpenDocNo"/>
+      </AttrNames>
+    </attributeValues>
+    <listOfValues IterBinding="DssAccountOpeningHeaderView1Iterator" StaticList="false" Uses="LOV_UserBranchName"
+                  id="UserBranchName"/>
+    <listOfValues Uses="LOV_AgentCode" StaticList="false" IterBinding="DssAccountOpeningLineView2Iterator"
+                  id="AgentCode"/>
+    <methodAction id="SearchAgent" RequiresUpdateModel="true" Action="invokeMethod" MethodName="SearchAgent"
+                  IsViewObjectMethod="false" DataControl="AOAMDataControl"
+                  InstanceName="data.AOAMDataControl.dataProvider"
+                  ReturnName="data.AOAMDataControl.methodResults.SearchAgent_AOAMDataControl_dataProvider_SearchAgent_result"/>
+  </bindings>
+</pageDefinition>

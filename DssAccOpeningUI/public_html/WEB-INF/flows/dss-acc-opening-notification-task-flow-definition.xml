@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="dss-acc-opening-notification-task-flow-definition">
+    <default-activity>setNVC_WfDocumentId</default-activity>
+    <data-control-scope>
+      <shared/>
+    </data-control-scope>
+    <input-parameter-definition id="__3">
+      <name>NVC_wfDocumentId</name>
+    </input-parameter-definition>
+    <view id="accOpenNotification">
+      <page>/fragments/accOpen/accOpenNotification.jsff</page>
+    </view>
+    <method-call id="setNVC_WfDocumentId">
+      <method>#{bindings.setNVC_WfDocumentId.execute}</method>
+      <outcome>
+        <fixed-outcome>setNVC_WfDocumentId</fixed-outcome>
+      </outcome>
+    </method-call>
+    <control-flow-rule id="__1">
+      <from-activity-id>setNVC_WfDocumentId</from-activity-id>
+      <control-flow-case id="__2">
+        <from-outcome>setNVC_WfDocumentId</from-outcome>
+        <to-activity-id>accOpenNotification</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <use-page-fragments/>
+  </task-flow-definition>
+</adfc-config>

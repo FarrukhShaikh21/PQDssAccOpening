@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="DssAccountOpeningLineView"
+  Version="12.2.1.0.31"
+  InheritPersonalization="merge"
+  BindingStyle="OracleName"
+  CustomQuery="true"
+  PageIterMode="Full">
+  <DesignTime>
+    <Attr Name="_isExpertMode" Value="true"/>
+  </DesignTime>
+  <ViewAccessor
+    Name="AgentDtlLovVO1"
+    ViewObjectName="pqt.dss.accOpening.model.lov.AgentDtlLovVO"
+    RowLevelBinds="true">
+    <ViewCriteriaUsage
+      Name="AgentDtlLovVOCriteria"
+      FullName="pqt.dss.accOpening.model.lov.AgentDtlLovVO.AgentDtlLovVOCriteria"/>
+    <ParameterMap>
+      <PIMap Variable="VC_Branch_Code">
+        <TransientExpression
+          trustMode="untrusted"
+          Name="ExpressionScript"><![CDATA[DssAccountOpeningHeaderView?.BranchCodeFk]]></TransientExpression>
+      </PIMap>
+    </ParameterMap>
+  </ViewAccessor>
+  <ListBinding
+    Name="LOV_AgentCode"
+    ListVOName="AgentDtlLovVO1"
+    ListRangeSize="-1"
+    ComboRowCountHint="10"
+    NullValueFlag="none"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="AgentCode"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="DerivedAttrNames">
+      <Item Value="AgentNoFk"/>
+      <Item Value="AgentName"/>
+      <Item Value="DateOfJoin"/>
+      <Item Value="Designation"/>
+      <Item Value="CnicNo"/>
+      <Item Value="DesigCode"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="VAgentCode"/>
+      <Item Value="NAgentNo"/>
+      <Item Value="AgentName"/>
+      <Item Value="DAppointment"/>
+      <Item Value="AgentRank"/>
+      <Item Value="VIdenNo"/>
+      <Item Value="VRankCode"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="AgentName"/>
+      <Item Value="VAgentCode"/>
+      <Item Value="MgrAgentName"/>
+      <Item Value="AgentRank"/>
+    </AttrArray>
+    <DisplayCriteria
+      Name="AgentDtlLovVOCriteria"/>
+  </ListBinding>
+  <SQLQuery><![CDATA[SELECT DssAccountOpeningLine.ACC_OPEN_HDR_FK,       
+       DssAccountOpeningLine.ACC_OPN_LINE_ID_PK,       
+       DssAccountOpeningLine.AGENT_NO_FK,       
+       DssAccountOpeningLine.BANK_ACC_NO,       
+       DssAccountOpeningLine.USER_ID_FK,       
+       DssAccountOpeningLine.ENTER_DATE,       
+       DssAccountOpeningLine.LAST_UPDATED_BY,       
+       DssAccountOpeningLine.LAST_UPDATED_DATE,       
+        AD.V_AGENT_CODE Agent_Code,   
+        AD.AGENT_NAME AGENT_NAME,   
+        AD.v_rank_code Desig_Code,   
+        AD.AGENT_RANK Designation,   
+        AD.v_iden_no CNIC_No,   
+        AD.d_appointment Date_Of_Join   
+  FROM DSS_ACCOUNT_OPENING_LINE DssAccountOpeningLine, VU_DSS_ACC_OPEN_AGENT_DETAIL AD   
+  where DssAccountOpeningLine.Agent_No_Fk = ad.N_AGENT_NO]]></SQLQuery>
+  <EntityUsage
+    Name="DssAccountOpeningLine"
+    Entity="pqt.dss.accOpening.model.eo.DssAccountOpeningLine"/>
+  <ViewAttribute
+    Name="AccOpenHdrFk"
+    PrecisionRule="true"
+    EntityAttrName="AccOpenHdrFk"
+    EntityUsage="DssAccountOpeningLine"
+    AliasName="ACC_OPEN_HDR_FK"/>
+  <ViewAttribute
+    Name="AccOpnLineIdPk"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="AccOpnLineIdPk"
+    EntityUsage="DssAccountOpeningLine"
+    AliasName="ACC_OPN_LINE_ID_PK"/>
+  <ViewAttribute
+    Name="AgentNoFk"
+    PrecisionRule="true"
+    EntityAttrName="AgentNoFk"
+    EntityUsage="DssAccountOpeningLine"
+    AliasName="AGENT_NO_FK"/>
+  <ViewAttribute
+    Name="BankAccNo"
+    PrecisionRule="true"
+    EntityAttrName="BankAccNo"
+    EntityUsage="DssAccountOpeningLine"
+    AliasName="BANK_ACC_NO"/>
+  <ViewAttribute
+    Name="UserIdFk"
+    PrecisionRule="true"
+    EntityAttrName="UserIdFk"
+    EntityUsage="DssAccountOpeningLine"
+    AliasName="USER_ID_FK"/>
+  <ViewAttribute
+    Name="EnterDate"
+    PrecisionRule="true"
+    EntityAttrName="EnterDate"
+    EntityUsage="DssAccountOpeningLine"
+    AliasName="ENTER_DATE"/>
+  <ViewAttribute
+    Name="LastUpdatedBy"
+    PrecisionRule="true"
+    EntityAttrName="LastUpdatedBy"
+    EntityUsage="DssAccountOpeningLine"
+    AliasName="LAST_UPDATED_BY"/>
+  <ViewAttribute
+    Name="LastUpdatedDate"
+    PrecisionRule="true"
+    EntityAttrName="LastUpdatedDate"
+    EntityUsage="DssAccountOpeningLine"
+    AliasName="LAST_UPDATED_DATE"/>
+  <ViewAttribute
+    Name="AgentCode"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="30"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="AGENT_CODE"
+    Expression="AGENT_CODE"
+    SQLType="VARCHAR"
+    LOVName="LOV_AgentCode"
+    IsNotNull="true">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="30"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="pqt.dss.accOpening.model.vo.DssAccountOpeningLineView.AgentCode_LABEL"/>
+        <DISPLAYWIDTH
+          Value="50"/>
+        <CONTROLTYPE
+          Value="input_text_lov"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="AgentName"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="4000"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="AGENT_NAME"
+    Expression="AGENT_NAME"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="4000"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="pqt.dss.accOpening.model.vo.DssAccountOpeningLineView.AgentName_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="DesigCode"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="10"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="DESIG_CODE"
+    Expression="DESIG_CODE"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="10"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="pqt.dss.accOpening.model.vo.DssAccountOpeningLineView.DesigCode_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Designation"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="100"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="DESIGNATION"
+    Expression="DESIGNATION"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="100"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="CnicNo"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="100"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="CNIC_NO"
+    Expression="CNIC_NO"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="100"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="pqt.dss.accOpening.model.vo.DssAccountOpeningLineView.CnicNo_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="DateOfJoin"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="oracle.jbo.domain.Date"
+    ColumnType="DATE"
+    AliasName="DATE_OF_JOIN"
+    Expression="DATE_OF_JOIN"
+    SQLType="DATE">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="pqt.dss.accOpening.model.vo.DssAccountOpeningLineView.DateOfJoin_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewLinkAccessor
+    Name="DssAccountOpeningHeaderView"
+    ViewLink="pqt.dss.accOpening.model.vo.AccOpenHdrFk1Link"
+    Type="oracle.jbo.Row"
+    Reversed="true"
+    IsUpdateable="false"/>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="pqt.dss.accOpening.model.DssAccOpeningmodelBundle"/>
+  </ResourceBundle>
+</ViewObject>

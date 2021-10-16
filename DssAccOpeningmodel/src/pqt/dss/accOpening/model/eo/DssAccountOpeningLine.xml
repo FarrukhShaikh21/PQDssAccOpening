@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE Entity SYSTEM "jbo_03_01.dtd">
+<!---->
+<Entity
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="DssAccountOpeningLine"
+  Version="12.2.1.0.31"
+  InheritPersonalization="merge"
+  DBObjectType="table"
+  DBObjectName="DSS_ACCOUNT_OPENING_LINE"
+  AliasName="DssAccountOpeningLine"
+  BindingStyle="OracleName"
+  RowClass="pqt.dss.accOpening.model.eo.DssAccountOpeningLineImpl">
+  <DesignTime>
+    <Attr Name="_codeGenFlag2" Value="Init|Delete|Access|DML"/>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
+  <Attribute
+    Name="AccOpenHdrFk"
+    ColumnName="ACC_OPEN_HDR_FK"
+    SQLType="NUMERIC"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    TableName="DSS_ACCOUNT_OPENING_LINE"/>
+  <Attribute
+    Name="AccOpnLineIdPk"
+    ColumnName="ACC_OPN_LINE_ID_PK"
+    SQLType="NUMERIC"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    TableName="DSS_ACCOUNT_OPENING_LINE"
+    PrimaryKey="true"/>
+  <Attribute
+    Name="AgentNoFk"
+    ColumnName="AGENT_NO_FK"
+    SQLType="NUMERIC"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    TableName="DSS_ACCOUNT_OPENING_LINE"/>
+  <Attribute
+    Name="BankAccNo"
+    Precision="50"
+    ColumnName="BANK_ACC_NO"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="DSS_ACCOUNT_OPENING_LINE">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="50"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="pqt.dss.accOpening.model.eo.DssAccountOpeningLine.BankAccNo_LABEL"/>
+        <DISPLAYWIDTH
+          Value="50"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Attribute>
+  <Attribute
+    Name="UserIdFk"
+    ColumnName="USER_ID_FK"
+    SQLType="NUMERIC"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    TableName="DSS_ACCOUNT_OPENING_LINE"/>
+  <Attribute
+    Name="EnterDate"
+    ColumnName="ENTER_DATE"
+    SQLType="DATE"
+    Type="oracle.jbo.domain.Date"
+    ColumnType="DATE"
+    TableName="DSS_ACCOUNT_OPENING_LINE"/>
+  <Attribute
+    Name="LastUpdatedBy"
+    ColumnName="LAST_UPDATED_BY"
+    SQLType="NUMERIC"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    TableName="DSS_ACCOUNT_OPENING_LINE"/>
+  <Attribute
+    Name="LastUpdatedDate"
+    ColumnName="LAST_UPDATED_DATE"
+    SQLType="DATE"
+    Type="oracle.jbo.domain.Date"
+    ColumnType="DATE"
+    TableName="DSS_ACCOUNT_OPENING_LINE"/>
+  <AccessorAttribute
+    Name="DssAccountOpeningHeader"
+    Association="pqt.dss.accOpening.model.eo.AccOpenHdrFk1Assoc"
+    AssociationEnd="pqt.dss.accOpening.model.eo.AccOpenHdrFk1Assoc.DssAccountOpeningHeader"
+    AssociationOtherEnd="pqt.dss.accOpening.model.eo.AccOpenHdrFk1Assoc.DssAccountOpeningLine"
+    Type="oracle.jbo.server.EntityImpl"
+    IsUpdateable="true"/>
+  <Key
+    Name="AccOpnLinePk"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="ACC_OPN_LINE_PK"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="pqt.dss.accOpening.model.eo.DssAccountOpeningLine.AccOpnLineIdPk"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="AccOpenHdrFk1">
+    <DesignTime>
+      <Attr Name="_referencedKey" Value="ACC_OPEN_HDR_PK"/>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="ACC_OPEN_HDR_FK"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="pqt.dss.accOpening.model.eo.DssAccountOpeningLine.AccOpenHdrFk"/>
+    </AttrArray>
+  </Key>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="pqt.dss.accOpening.model.DssAccOpeningmodelBundle"/>
+  </ResourceBundle>
+</Entity>

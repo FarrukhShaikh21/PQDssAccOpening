@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="reportTypeLovVO"
+  Version="12.2.1.0.31"
+  InheritPersonalization="merge"
+  BindingStyle="OracleName"
+  CustomQuery="true"
+  PageIterMode="Full">
+  <DesignTime>
+    <Attr Name="_isExpertMode" Value="true"/>
+  </DesignTime>
+  <Properties>
+    <SchemaBasedProperties>
+      <LABEL
+        ResId="pqt.dss.accOpening.model.lov.reportTypeLovVO_LABEL"/>
+    </SchemaBasedProperties>
+  </Properties>
+  <SQLQuery><![CDATA[SELECT 'WITH_LETTER_HEAD' ACC_OP_CODE, 'With Letter head' ACC_OP_DESC 
+  FROM DUAL 
+UNION ALL 
+SELECT 'WITHOUT_LETTER_HEAD' ACC_OP_CODE, 'Without Letter head' ACC_OP_DESC 
+  FROM DUAL]]></SQLQuery>
+  <ViewAttribute
+    Name="AccOpCode"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="255"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="ACC_OP_CODE"
+    Expression="ACC_OP_CODE"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="19"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="AccOpDesc"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="19"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="ACC_OP_DESC"
+    Expression="ACC_OP_DESC"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="19"/>
+    </DesignTime>
+  </ViewAttribute>
+  <AttrArray Name="KeyAttributes">
+    <Item Value="AccOpCode"/>
+  </AttrArray>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="pqt.dss.accOpening.model.DssAccOpeningmodelBundle"/>
+  </ResourceBundle>
+</ViewObject>

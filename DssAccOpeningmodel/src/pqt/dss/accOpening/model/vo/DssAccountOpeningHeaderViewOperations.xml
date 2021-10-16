@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding='windows-1252'?>
+<!DOCTYPE OperationDefinitions SYSTEM "jbo_03_01.dtd">
+<OperationDefinitions xmlns="http://xmlns.oracle.com/bc4j" Name="DssAccountOpeningHeaderViewOperations">
+  <ExpressionCodeSource
+    Name="DssAccountOpeningHeaderViewRow"
+    Type="Static"
+    URI="pqt/dss/accOpening/model/vo/DssAccountOpeningHeaderViewRow.bcs"/>
+</OperationDefinitions>
