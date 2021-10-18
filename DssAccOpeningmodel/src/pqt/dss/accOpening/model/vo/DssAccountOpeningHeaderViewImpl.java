@@ -90,11 +90,17 @@ public class DssAccountOpeningHeaderViewImpl extends ViewObjectImpl implements D
               ExternalContext ectx = fctx.getExternalContext();
               HttpSession userSession = (HttpSession) ectx.getSession(false);
               Object VUserID = userSession.getAttribute("pUserId") == null ? "268" : userSession.getAttribute("pUserId");
-              setWhereClause("QRSLT.BRANCH_CODE_FK IN\n" + 
+              setWhereClause("(exists\n" + 
+              " (select 1 \n" + 
+              " from DSS_SM_USERS a\n" + 
+              " where a.user_id_pk = "+ VUserID+"\n" + 
+              " and a.GIS_LOCATION_ID_FK = QRSLT.GIS_LOCATION_ID_FK ) OR '"+userSession.getAttribute("SSV_UserType")+"'!= 'BO'"+") ");  
+              
+              /*setWhereClause("QRSLT.BRANCH_CODE_FK IN\n" + 
               "       (select A.BRANCH_CODE\n" + 
               "          from DSS_SM_USERS AA, PQT_IL_LOC_BRANCH_DTL a\n" + 
               "         WHERE AA.GIS_LOCATION_ID_FK = A.IL_LOC_ID_FK\n" + 
-              "           AND AA.USER_ID_PK = "+  VUserID +")");
+              "           AND AA.USER_ID_PK = "+  VUserID +")");*/
     //              setWhereClause("USER_ID_FK =" + VUserID);
               executeQuery();
           }
