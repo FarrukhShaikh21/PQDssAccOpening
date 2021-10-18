@@ -13,6 +13,20 @@
               </af:group>
             </af:toolbar>
           </f:facet>
+          <f:facet name="context">
+            <af:panelGroupLayout id="pgl2" layout="horizontal">
+              <af:outputText value="(" id="ot7"/>
+              <af:selectOneChoice value="#{bindings.GisLocationIdFk.inputValue}"
+                                  label="#{bindings.GisLocationIdFk.label}"
+                                  required="#{bindings.GisLocationIdFk.hints.mandatory}"
+                                  shortDesc="#{bindings.GisLocationIdFk.hints.tooltip}" id="soc1" simple="true"
+                                  readOnly="true" contentStyle="font-weight:bold">
+                <f:selectItems value="#{bindings.GisLocationIdFk.items}" id="si1"/>
+                <f:validator binding="#{bindings.GisLocationIdFk.validator}"/>
+              </af:selectOneChoice>
+              <af:outputText value=")" id="ot6"/>
+            </af:panelGroupLayout>
+          </f:facet>
         </af:panelHeader>
         <af:spacer width="10" height="10" id="s3"/>
         <af:panelLabelAndMessage label="#{bindings.AccOpenDocNo.hints.label}" id="plam1"

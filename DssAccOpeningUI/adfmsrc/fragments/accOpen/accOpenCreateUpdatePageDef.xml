@@ -59,5 +59,7 @@
                   IsViewObjectMethod="false" DataControl="AOAMDataControl"
                   InstanceName="data.AOAMDataControl.dataProvider"
                   ReturnName="data.AOAMDataControl.methodResults.SearchAgent_AOAMDataControl_dataProvider_SearchAgent_result"/>
+    <list IterBinding="DssAccountOpeningHeaderView1Iterator" StaticList="false" Uses="LOV_GisLocationIdFk"
+          id="GisLocationIdFk" DTSupportsMRU="true" SelectItemValueMode="ListObject"/>
   </bindings>
 </pageDefinition>

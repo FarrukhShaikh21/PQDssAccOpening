@@ -4,7 +4,7 @@
 <ViewObject
   xmlns="http://xmlns.oracle.com/bc4j"
   Name="DssAccountOpeningHeaderView"
-  Version="12.2.1.0.31"
+  Version="12.2.1.11.57"
   InheritPersonalization="merge"
   BindingStyle="OracleName"
   CustomQuery="true"
@@ -56,6 +56,10 @@
     Name="reportTypeLovVO1"
     ViewObjectName="pqt.dss.accOpening.model.lov.reportTypeLovVO"
     RowLevelBinds="true"/>
+  <ViewAccessor
+    Name="AccLocationLov"
+    ViewObjectName="pqt.dss.accOpening.model.lov.LocationLov"
+    RowLevelBinds="true"/>
   <ListBinding
     Name="LOV_UserBranchName"
     ListVOName="BranchDtlLovVO1"
@@ -97,6 +101,25 @@
     </AttrArray>
     <AttrArray Name="ListDisplayAttrNames">
       <Item Value="AccOpDesc"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_GisLocationIdFk"
+    ListVOName="AccLocationLov"
+    ListRangeSize="-1"
+    NullValueFlag="start"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="GisLocationIdFk"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="IlLocIdPk"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="Location"/>
     </AttrArray>
     <DisplayCriteria/>
   </ListBinding>
@@ -284,7 +307,15 @@
     PrecisionRule="true"
     EntityAttrName="GisLocationIdFk"
     EntityUsage="DssAccountOpeningHeader"
-    AliasName="GIS_LOCATION_ID_FK"/>
+    AliasName="GIS_LOCATION_ID_FK"
+    LOVName="LOV_GisLocationIdFk">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="choice"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
   <ViewAttribute
     Name="UserBranchName"
     IsPersistent="false"

@@ -104,6 +104,6 @@
       </hash>
    </hash>
    <hash n="Weblogic JDBC">
-      <value n="Weblogic-JDBC-Auto-Sync-Key" v="false"/>
+      <value n="Weblogic-JDBC-Auto-Sync-Key" v="true"/>
    </hash>
 </jws:workspace>

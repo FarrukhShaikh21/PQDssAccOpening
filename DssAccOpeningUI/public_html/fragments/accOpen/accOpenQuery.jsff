@@ -17,7 +17,7 @@
           <f:facet name="toolbar">
             <af:toolbar id="t1">
               <af:group id="g1">
-                <af:button text="Create New" id="b1" action="goCreate"/>
+                <af:button text="Create New" id="b1" action="goCreate" disabled="#{sessionScope.SSV_UserType != 'BO'}"/>
                 <af:button actionListener="#{bindings.Apply.execute}" text="Apply" disabled="#{!bindings.Apply.enabled}"
                            id="b2"/>
               </af:group>
