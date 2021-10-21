@@ -7,7 +7,7 @@
         <Contents>thin</Contents>
       </StringRefAddr>
       <StringRefAddr addrType="hostname">
-        <Contents>172.16.6.20</Contents>
+        <Contents>172.16.0.224</Contents>
       </StringRefAddr>
       <SecureRefAddr addrType="password"/>
       <StringRefAddr addrType="subtype">
@@ -17,7 +17,7 @@
         <Contents>1521</Contents>
       </StringRefAddr>
       <StringRefAddr addrType="serviceName">
-        <Contents>adfdev</Contents>
+        <Contents>adfuat</Contents>
       </StringRefAddr>
       <StringRefAddr addrType="user">
         <Contents>dssportal</Contents>

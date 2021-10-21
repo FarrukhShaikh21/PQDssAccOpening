@@ -90,16 +90,17 @@ public class DssAccountOpeningHeaderViewImpl extends ViewObjectImpl implements D
 
               userSession.setAttribute("SSV_UserDept", 3);
               userSession.setAttribute("pUserId",1139);
-                      userSession.setAttribute("SSV_UserType","BO");
+                      userSession.setAttribute("SSV_UserType","AGENT");
 
               setWhereClause(null);
               Object VUserID = userSession.getAttribute("pUserId") == null ? "268" : userSession.getAttribute("pUserId");
-              setWhereClause("(exists\n" + 
-              " (select 1 \n" + 
-              " from DSS_SM_USERS a\n" + 
-              " where a.user_id_pk = "+ VUserID+"\n" + 
-              " and a.GIS_LOCATION_ID_FK = QRSLT.GIS_LOCATION_ID_FK ) OR '"+userSession.getAttribute("SSV_UserType")+"'!= 'BO'"+") ");  
-              
+             
+              if (userSession.getAttribute("SSV_UserType").equals("BO")) {
+                  setWhereClause("((exists (select 1 FROM DSS_SM_USERS AA, PQT_IL_LOC_BRANCH_DTL BD " + " WHERE 1=1" +
+                                 " AND AA.USER_ID_PK  =" + VUserID +
+                                 " AND AA.GIS_LOCATION_ID_FK = BD.IL_LOC_ID_FK " +
+                                 " AND BD.BRANCH_CODE = QRSLT.BRANCH_CODE_FK)))");
+              }              
               /*setWhereClause("QRSLT.BRANCH_CODE_FK IN\n" + 
               "       (select A.BRANCH_CODE\n" + 
               "          from DSS_SM_USERS AA, PQT_IL_LOC_BRANCH_DTL a\n" + 
